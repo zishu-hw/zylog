@@ -18,7 +18,7 @@ func init() {
 	initPath(path)
 	Log = logrus.New()
 	Log.SetLevel(logrus.InfoLevel)
-	ConfigLocalFilesystemLogger("", path+"std.log", time.Hour*24, time.Second*20)
+	ConfigLocalFilesystemLogger("", path+"std.log", time.Hour*24, time.Hour*24)
 }
 
 func initPath(path string) {
