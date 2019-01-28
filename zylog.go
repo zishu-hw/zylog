@@ -1,24 +1,28 @@
 package zylog
 
 import (
-	"github.com/lestrrat/go-file-rotatelogs"
-	"github.com/pkg/errors"
-	"github.com/rifflock/lfshook"
-	"github.com/sirupsen/logrus"
 	"log"
 	"os"
 	"path"
 	"time"
+
+	rotatelogs "github.com/lestrrat/go-file-rotatelogs"
+	"github.com/pkg/errors"
+	"github.com/rifflock/lfshook"
+	"github.com/sirupsen/logrus"
 )
 
 var Log *logrus.Logger
 
 func init() {
-	path := "./log/"
-	initPath(path)
+	// SetPath("./log")
 	Log = logrus.New()
 	Log.SetLevel(logrus.InfoLevel)
-	ConfigLocalFilesystemLogger("", path+"std.log", time.Hour*24, time.Hour*24)
+}
+
+func SetPath(path string) {
+	initPath(path)
+	ConfigLocalFilesystemLogger(path, "std.log", time.Hour*24, time.Hour*24)
 }
 
 func initPath(path string) {
