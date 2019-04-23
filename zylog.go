@@ -15,9 +15,9 @@ import (
 var Log *logrus.Logger
 
 func init() {
-	// SetPath("./log")
 	Log = logrus.New()
 	Log.SetLevel(logrus.InfoLevel)
+	SetPath("./log")
 }
 
 func SetPath(path string) {
